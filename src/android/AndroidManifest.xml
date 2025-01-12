@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.javafxports.hellofx"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+    <uses-sdk
+            android:minSdkVersion="21"
+            android:targetSdkVersion="35"/>
+
+    <supports-screens android:xlargeScreens="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+            android:label="Hello FX"
+            android:name="android.support.multidex.MultiDexApplication"
+            android:icon="@mipmap/ic_launcher"
+            android:requestLegacyExternalStorage="true">
+
+        <activity
+                android:name="javafxports.android.FXActivity"
+                android:label="Hello FX"
+                android:configChanges="orientation|screenSize"
+                android:exported="true">
+
+            <meta-data
+                    android:name="main.class"
+                    android:value="org.javafxports.hellofx.App"/>
+            <meta-data
+                    android:name="debug.port"
+                    android:value="0"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name="com.gluonhq.impl.charm.down.plugins.android.PermissionRequestActivity"/>
+
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="org.javafxports.hellofx.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_provider_paths"/>
+
+        </provider>
+
+    </application>
+</manifest>
